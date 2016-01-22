@@ -1,0 +1,67 @@
+# .gitconfig
+
+[core]
+	excludesfile = ~/.gitignore
+	preloadindex = true
+	fscache = true
+
+[user]
+	name = Remy Roez
+	email = remyroez+github@gmail.com
+
+[color]
+	ui = auto
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[push]
+	default = simple
+
+[alias]
+	ad = add
+	br = branch
+	bra = branch -a
+	brd = branch -d
+	brD = branch -D
+	brm = branch -m
+	ci = commit
+	cia = commit -a
+	cim = commit -m
+	co = checkout
+	cob = checkout -b
+	cp = cherry-pick
+	df = diff
+	dfm = diff master
+	dfs = diff --staged
+	ft = fetch
+	mg = merge
+	mgn = merge --no-ff
+	ps = push
+	pu = pull
+	pur = pull --rebase
+	rb = rebase
+	rs = reset
+	sh = show
+	st = status
+
+	a = add . -v
+	b = checkout -b
+	c = commit -v -m
+	p = !git push origin `git rev-parse --abbrev-ref HEAD` -v -u
+	s = status --short --branch
+
+	go = "!f(){ if [ $# -ge 2 ]; then git checkout -b `date +$1/%y%m%d-%H%M%S-$2` master; else echo 'help: git start <topic-type> <topic-name>'; fi;};f"
+
+	back = checkout master
+	unstage = reset HEAD
+	check = remote prune --dry-run origin
+	refresh = remote prune origin
+	cancel = reset --soft HEAD^
+	hcancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
+	orphan = checkout --orphan
+	empty = commit --allow-empty -v -m
+
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
