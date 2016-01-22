@@ -1,5 +1,10 @@
 # Created by newuser for 5.1.1
 
+# go
+export GOROOT=/mingw64/lib/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # color
 autoload -Uz colors
 colors
@@ -49,3 +54,15 @@ setopt ignore_eof
 
 # wildcard in history
 bindkey '^R' history-incremental-pattern-search-backward
+
+# peco
+peco_rc="$HOME/.zshrc.peco"
+if [ -f $peco_rc ]; then
+  source $peco_rc
+fi
+
+# zplug
+zplug_rc="$HOME/.zshrc.zplug"
+if [ -f $zplug_rc ]; then
+  source $zplug_rc
+fi
