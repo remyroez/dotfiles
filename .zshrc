@@ -53,16 +53,30 @@ setopt print_eight_bit
 setopt ignore_eof
 
 # wildcard in history
-bindkey '^R' history-incremental-pattern-search-backward
+#bindkey '^R' history-incremental-pattern-search-backward
 
-# peco
-peco_rc="$HOME/.zshrc.peco"
-if [ -f $peco_rc ]; then
-  source $peco_rc
+# Check if zplug is installed
+[[ -d ~/.zplug ]] || {
+  curl -fLo ~/.zplug/zplug --create-dirs https://git.io/zplug
+  source ~/.zplug/zplug && zplug update --self
+}
+
+# Essential
+source ~/.zplug/zplug
+
+zplug "b4b4r07/zplug"
+
+# Local loading
+zplug "~/.zsh", from:local
+
+# Install plugins that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
 fi
 
-# zplug
-zplug_rc="$HOME/.zshrc.zplug"
-if [ -f $zplug_rc ]; then
-  source $zplug_rc
-fi
+zplug load
