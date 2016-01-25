@@ -47,14 +47,19 @@
 	sh = show
 	st = status
 
+	# quick
 	a = add . -v
 	b = checkout -b
 	c = commit -v -m
+	o = checkout
 	p = !git push origin `git rev-parse --abbrev-ref HEAD` -v -u
 	s = status --short --branch
+	w = browse
 
+	# github flow
 	go = "!f(){ if [ $# -ge 2 ]; then git checkout -b `date +$1/%y%m%d-%H%M%S-$2` master; else echo 'help: git start <topic-type> <topic-name>'; fi;};f"
 
+	# long
 	back = checkout master
 	unstage = reset HEAD
 	check = remote prune --dry-run origin
@@ -64,4 +69,8 @@
 	orphan = checkout --orphan
 	empty = commit --allow-empty -v -m
 
+	# ghq
+	get = !ghq get
+
+	# log
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short

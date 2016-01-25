@@ -1,17 +1,37 @@
 # Created by newuser for 5.1.1
 
+# env
+export LANG=ja_JP.UTF-8
+
+# emacs-like
+bindkey -e
+
 # go
-export GOROOT=/mingw64/lib/go
-export GOPATH=$HOME/go
+export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
+export GHQ_ROOT=$GOPATH/src
 
 # color
 autoload -Uz colors
 colors
 
+#setopt prompt_subst
+#autoload -Uz add-zsh-hook
+#autoload -Uz vcs_info
+#zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
+#zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
+#zstyle ':vcs_info:*' get-revision true
+#zstyle ':vcs_info:*' check-for-changes true
+#zstyle ':vcs_info:*' max-exports 6
+#_vcs_precmd() {
+#    vcs_info
+#    PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~ %{${vcs_info_msg_0_}%}
+#%# "
+#}
+#add-zsh-hook precmd _vcs_precmd
+
 # prompt
-PROMPT="
-%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
+PROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%} %~
 %# "
 
 # auto complete
@@ -69,6 +89,16 @@ zplug "b4b4r07/zplug"
 # Local loading
 zplug "~/.zsh", from:local
 
+# Make sure to use double quotes to prevent shell expansion
+zplug "b4b4r07/enhancd",   of:enhancd.sh
+zplug "b4b4r07/emoji-cli", if:"which jq"
+zplug "mrowa44/emojify",   as:command
+#zplug "junegunn/fzf-bin",  as:command, from:gh-r, file:"fzf"
+#zplug "peco/peco",         as:command, from:gh-r
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+#zplug "zsh-users/zsh-syntax-highlighting", nice:19
+
 # Install plugins that have not been installed yet
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -79,4 +109,4 @@ if ! zplug check --verbose; then
     fi
 fi
 
-zplug load
+zplug load --verbose
