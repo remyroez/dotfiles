@@ -71,6 +71,7 @@
 
 	# ghq
 	get = !ghq get
+	list = !ghq list
 
 	# log
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
