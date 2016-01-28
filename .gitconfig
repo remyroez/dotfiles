@@ -70,7 +70,7 @@
 	empty = commit --allow-empty -v -m
 
 	# ghq
-	get = !ghq get
+	get = !ghq get -p
 	list = !ghq list
 
 	# log
