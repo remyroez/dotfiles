@@ -5,11 +5,13 @@ export LANG=ja_JP.UTF-8
 
 # emacs-like
 bindkey -e
+stty -ixon -ixoff
 
-# go
+# export
 export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
 export GHQ_ROOT=$GOPATH/src
+
+export PATH=$PATH:$GOPATH/bin
 
 # color
 autoload -Uz colors
@@ -87,7 +89,7 @@ source ~/.zplug/zplug
 zplug "b4b4r07/zplug"
 
 # Local loading
-zplug "~/.zsh", from:local
+zplug "~/.zsh", from:local, nice:1
 
 # Make sure to use double quotes to prevent shell expansion
 zplug "b4b4r07/enhancd",   of:enhancd.sh
@@ -109,4 +111,4 @@ if ! zplug check --verbose; then
     fi
 fi
 
-zplug load --verbose
+zplug load
