@@ -17,6 +17,9 @@ export PATH=$PATH:$GOPATH/bin
 autoload -Uz colors
 colors
 
+# remove cr
+unsetopt promptcr
+
 #setopt prompt_subst
 #autoload -Uz add-zsh-hook
 #autoload -Uz vcs_info
